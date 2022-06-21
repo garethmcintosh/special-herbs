@@ -2,23 +2,21 @@ function makeObject(title,releases,songNames,samplesMap, songsMap) {
 
     for (let i = 0; i < songNames.length; i++) {
         let songName = songNames[i];
-        const samplesList = samplesMap.get(title);
-        const songsList = songsMap.get(title);
+        const samplesList = samplesMap.get(songName);
+        const songsList = songsMap.get(songName);
         let result = {
-            title: {
+            title: title,
+            info : {
                 releases:releases,
-                songs: {
-                    songName: {
-                        samples:samplesList,
-                        songs:songsList
-                   }
+                tracks: {
+                    name: songName,
+                    samples:samplesList,
+                    songs:songsList
                 }    
             }
        }
        return result;
-
     }
-
 }
 
 const fs = require('fs');
